@@ -34,30 +34,53 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     url: "/Popularity",
     views: {
       'menuContent': {
-        templateUrl: "templates/Popularity.html"
-      }
+         templateUrl: "templates/Popularity.html",
+         controller: 'PlaylistsCtrl'
+       }
     }
-  })
+   })
 
-  .state('app.browse', {
-    url: "/browse",
+  .state('app.Psingle', {
+    url: "/Popularity/:playlistId",
     views: {
       'menuContent': {
-        templateUrl: "templates/browse.html"
+        templateUrl: "templates/playlist.html",
+        controller: 'PlaylistCtrl'
       }
     }
   })
-    .state('app.Forbes', {
-      url: "/Forbes",
-      views: {
-        'menuContent': {
-          templateUrl: "templates/Forbes.html",
-          controller: 'PlaylistsCtrl'
-        }
-      }
-    })
 
-  .state('app.single', {
+  .state('app.Rocky', {
+    url: "/Rocky",
+    views: {
+      'menuContent': {
+         templateUrl: "templates/Rocky.html",
+         controller: 'PlaylistsCtrl'
+       }
+    }
+   })
+
+  .state('app.Rsingle', {
+    url: "/Rocky/:playlistId",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/playlist.html",
+        controller: 'PlaylistCtrl'
+      }
+    }
+  })
+
+  .state('app.Forbes', {
+    url: "/Forbes",
+    views: {
+      'menuContent': {
+         templateUrl: "templates/Forbes.html",
+         controller: 'PlaylistsCtrl'
+       }
+    }
+   })
+
+  .state('app.Fsingle', {
     url: "/Forbes/:playlistId",
     views: {
       'menuContent': {
@@ -65,7 +88,88 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         controller: 'PlaylistCtrl'
       }
     }
+  })
+
+  .state('app.Whitman', {
+    url: "/Whitman",
+    views: {
+      'menuContent': {
+         templateUrl: "templates/Whitman.html",
+         controller: 'PlaylistsCtrl'
+       }
+    }
+   })
+
+  .state('app.Whsingle', {
+    url: "/Whitman/:playlistId",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/playlist.html",
+        controller: 'PlaylistCtrl'
+      }
+    }
+  })
+
+  .state('app.JCL', {
+    url: "/JCL",
+    views: {
+      'menuContent': {
+         templateUrl: "templates/JCL.html",
+         controller: 'PlaylistsCtrl'
+       }
+    }
+   })
+
+  .state('app.Jsingle', {
+    url: "/JCL/:playlistId",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/playlist.html",
+        controller: 'PlaylistCtrl'
+      }
+    }
+  })
+
+  .state('app.Grad', {
+    url: "/Grad",
+    views: {
+      'menuContent': {
+         templateUrl: "templates/Grad.html",
+         controller: 'PlaylistsCtrl'
+       }
+    }
+   })
+
+  .state('app.Gsingle', {
+    url: "/Grad/:playlistId",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/playlist.html",
+        controller: 'PlaylistCtrl'
+      }
+    }
+  })
+
+  .state('app.Wu', {
+    url: "/Wu",
+    views: {
+      'menuContent': {
+         templateUrl: "templates/Wu.html",
+         controller: 'PlaylistsCtrl'
+       }
+    }
+   })
+
+  .state('app.Wsingle', {
+    url: "/Wu/:playlistId",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/playlist.html",
+        controller: 'PlaylistCtrl'
+      }
+    }
   });
+
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/Forbes');
+  $urlRouterProvider.otherwise('/app/Popularity');
 });

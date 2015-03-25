@@ -35,12 +35,46 @@ angular.module('starter.controllers', [])
 
 .controller('PlaylistsCtrl', function($scope) {
   $scope.Forbes = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
+    { title: 'Beef and Rice Noodles', id: 1 },
+    { title: 'Chicken with Mushrooms and Leeks', id: 2 },
+    { title: 'Vegetables and Couscous', id: 3 },
+    { title: 'Hummus', id: 4 }
+  ];
+  $scope.Wu = [
+    { title: 'Chicken Tenders', id: 1 },
+    { title: 'Corn', id: 2 },
+    { title: 'Shoestring Fries', id: 3 },
+    { title: 'Chicken Rice Soup', id: 4 }
+  ];
+  $scope.Popularity = [
+    { title: 'Chicken Tenders', id: 1 },
+    { title: 'Beef and Rice Noodles', id: 2 },
+    { title: 'Moo Sho Pork', id: 3 },
+    { title: 'Pasta Marinara', id: 4 }
+  ];
+  $scope.Rocky = [
+    { title: 'Pasta Marinara', id: 1 },
+    { title: 'Tortellini Primavera', id: 2 },
+    { title: 'Cheese Pizza', id: 3 },
+    { title: 'Grilled Cheese Trio', id: 4 }
+  ];
+  $scope.Whitman = [
+    { title: 'Fried Catfish Shooter', id: 1 },
+    { title: 'Basil Chicken', id: 2 },
+    { title: 'Hot and Sour Soup', id: 3 },
+    { title: 'Tofu Vietnamese', id: 4 }
+  ];
+  $scope.JCL = [
+    { title: 'Lemon Pollack', id: 1 },
+    { title: 'Black Bean Veggie Couscous', id: 2 },
+    { title: 'Baked Sweet Potato', id: 3 },
+    { title: 'Sauteed Green Beans', id: 4 }
+  ];
+  $scope.Grad = [
+    { title: 'Moo Sho Pork', id: 1 },
+    { title: 'Thai Coconut Soup', id: 2 },
+    { title: 'Buffalo Chicken Wings', id: 3 },
+    { title: 'Sesame Noodles', id: 4 }
   ];
 })
 
