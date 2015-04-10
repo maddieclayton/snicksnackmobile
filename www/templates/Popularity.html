@@ -2,7 +2,7 @@
   <ion-content>
     <ion-list>
       <ion-item ng-repeat="item in Popularity" href="#/app/Popularity/{{playlist.id}}">
-        {{item.substring(3,item.length)}}
+        {{item['name']}}
       </ion-item>
     </ion-list>
   </ion-content>

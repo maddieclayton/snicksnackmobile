@@ -1,4 +1,8 @@
 <ion-side-menus enable-menu-with-back-views="false">
+  <head>
+    <script type="text/javascript" src="controllers.js"></script>
+  </head>
+  
   <ion-side-menu-content>
     <ion-nav-bar class="bar-stable">
       <ion-nav-back-button>
@@ -54,7 +58,7 @@
             <i class="radio-icon ion-checkmark"></i>
           </label>
           <label class="item item-radio" item-icon-right nav-clear href="#/app/Popularity">
-            <input type="checkbox" name="group">
+            <input type="checkbox" name="group" onClick="change('F')" src="controllers.js">
             <div class="item-content">
               <img src="img/F.png" width="20">
               Forbes

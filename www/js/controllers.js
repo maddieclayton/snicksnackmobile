@@ -1,119 +1,40 @@
 angular.module('starter.controllers', [])
 
 
-
 .controller('PlaylistsCtrl', function($scope) {
-  var items = ["W: Nuggets", "F: Melon"];
-  var filters = [];
-  var F = false;
-  var Wu = false;
-  var R = false;
-  var Wh = false;
-  var J = false;
-  var G = false;
-  $scope.change = function() {
-    items1 = [];
-    for(filter in filters) {
-      for(item in items) {
-        if(item.substring(0, 1) == filter)
-          items1.push(item)
-      }
+  //var items = JSON.parse(query result);
+  var items = [{'name': 'Nuggets', 'filters': ['W'], 'votes': 5},
+    {'name': 'Melon', 'filters': ['F'], 'votes': 2}];
+  var displayedItems = []
+  var filters = []; //F, Wu, R, Wh, J, G
+  change('');
+  $scope.Popularity = displayedItems;
+
+  function change(filter) {
+    if (filter != '') {
+    index = filters.indexOf(filter);
+    if(index == -1)
+      filters.push(filter);
+    else
+      filters.splice(index, 1);
     }
-    items = items1;
-    window.location.reload(true)
-  }
-  $scope.Forbes = function() {
-    if(F) {
-      filters.push("F")
-    }
-    else {
-      filter1 = [];
-      for(filter in filters) {
-        if(filter != "F") {
-          filter1.push(filter);
+
+    displayedItems = [];
+    for (i = 0; i < items.length; i++) {
+      item = items[i];
+      var addItem = true;
+      itemFilters = item['filters'];
+      for (j = 0; j < filters.length; j++) {
+        if (itemFilters.indexOf(filters[j]) == -1) {
+          addItem = false;
+          break;
         }
       }
-      filters = filter1;
-      change()
+      if (addItem == true)
+        displayedItems.push(item);
     }
-  }
-  $scope.Wu = function() {
-    if(F) {
-      filters.push("W")
-    }
-    else {
-      filter1 = [];
-      for(filter in filters) {
-        if(filter != "W") {
-          filter1.push(filter);
-        }
-      }
-      filters = filter1;
-      change()
-    }
-  }
-  $scope.Popularity = items;
-  $scope.Whitman = function() {
-    if(F) {
-      filters.push("H")
-    }
-    else {
-      filter1 = [];
-      for(filter in filters) {
-        if(filter != "H") {
-          filter1.push(filter);
-        }
-      }
-      filters = filter1;
-      change()
-    }
-  }
-  $scope.Rocky = function() {
-    if(F) {
-      filters.push("R")
-    }
-    else {
-      filter1 = [];
-      for(filter in filters) {
-        if(filter != "R") {
-          filter1.push(filter);
-        }
-      }
-      filters = filter1;
-      change()
-    }
-  }
-  $scope.CJL = function() {
-    if(F) {
-      filters.push("C")
-    }
-    else {
-      filter1 = [];
-      for(filter in filters) {
-        if(filter != "C") {
-          filter1.push(filter);
-        }
-      }
-      filters = filter1;
-      change()
-    }
-  }
-  $scope.Grad = function() {
-    if(F) {
-      filters.push("G")
-    }
-    else {
-      filter1 = [];
-      for(filter in filters) {
-        if(filter != "G") {
-          filter1.push(filter);
-        }
-      }
-      filters = filter1;
-      change()
-    }
+    //state.go($state.current, {}, {reload: true});
   }
 })
-
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 });
