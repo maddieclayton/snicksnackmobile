@@ -4,12 +4,18 @@ angular.module('starter.controllers', [])
   var ip = '10.8.82.196';
   //var items = JSON.parse(query result);
   var items = [{'Name':'Nuggets', 'Hall':'Wilson', 'Votes':5, 'Id':123, 'Filters':['Vegan']},
-    {'Name':'Melon', 'Hall':'Forbes', 'Votes':2, 'Id':234, 'Filters':[]}];
+    {'Name':'Melon', 'Hall':'Forbes', 'Votes':2, 'Id':234, 'Filters':[]},
+    {'Name':'Chicken', 'Hall':'Forbes', 'Votes':2, 'Id':234, 'Filters':[]},
+    {'Name':'Beef', 'Hall':'Forbes', 'Votes':2, 'Id':234, 'Filters':[]},
+    {'Name':'Pork', 'Hall':'Forbes', 'Votes':2, 'Id':234, 'Filters':[]},
+    {'Name':'Lamb', 'Hall':'Forbes', 'Votes':2, 'Id':234, 'Filters':[]},
+    {'Name':'Ice Cream', 'Hall':'Forbes', 'Votes':2, 'Id':234, 'Filters':[]},
+    {'Name':'Brownie', 'Hall':'Forbes', 'Votes':2, 'Id':234, 'Filters':[]}];
   var displayedItems = [];
   var halls = []; //Forbes, Wilson, Rocky, Whitman, CJL, Grad
   var filters = []; //
   change('', '');
-  $scope.Popularity = displayedItems;
+  $scope.displayedItems = displayedItems;
 
   //click event listeners for filter buttons
   document.getElementById ("forbes").addEventListener ("click", forbesFilter, false);
@@ -29,7 +35,7 @@ angular.module('starter.controllers', [])
 
   //called on load and after each filter click
   function change(type, button) {
-    console.log('change ' + button); //testing
+    //console.log('change ' + button); //testing
     var index = -2;
     //update hall/filter
     if (type == 'hall') {
@@ -63,10 +69,11 @@ angular.module('starter.controllers', [])
       if (addItem == true)
         displayedItems.push(item);
     }
-    //print for debugging
+    /* print for debugging
     console.log(halls.length);
     console.log(filters.length);
-    console.log(displayedItems.length);
+    console.log(displayedItems.length); */
+    $scope.displayedItems = displayedItems;
   }
 })
 .controller('PlaylistCtrl', function($scope, $stateParams) {
