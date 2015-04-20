@@ -1,120 +1,75 @@
-<ion-side-menus enable-menu-with-back-views="false">
-  <ion-side-menu-content>
+<html ng-app="ionicApp">
+<body>
+  <ion-header>
     <ion-nav-bar class="bar-stable">
       <ion-nav-back-button>
       </ion-nav-back-button>
-
-      <ion-nav-buttons side="left">
-        <button class="button button-clear button-positive" menu-toggle="left">Filter By</button>
-      </ion-nav-buttons>
       <ion-nav-buttons side="right">
-        <button class="button button-clear button-positive" menu-toggle="right">
+        <button class="item button-clear button-positive" menu-toggle="right">
           <img src="img/logo.png" width="35">
         </button>
       </ion-nav-buttons>
     </ion-nav-bar>
     <ion-nav-view name="menuContent"></ion-nav-view>
-  </ion-side-menu-content>
+  </ion-header>
 
-  <ion-side-menu side="left">
-    <ion-header-bar class="bar-stable">
-      <h1 class="title">Filter By</h1>
-    </ion-header-bar>
-    <ion-content>
-      <ion-list>
-        <ion-item item-icon-right nav-clear href="#/app/Popularity">
-          Clear All Filters
-        </ion-item>
-        <div class="list">
-          <div class="item item-divider">
-            Dining Halls
-          </div>
-          <label class="item item-radio" item-icon-right nav-clear href="#/app/Popularity">
-            <input type="checkbox" name="group" id="whitman">
-            <div class="item-content">
-              <img src="img/H.png" width="20">
-              Whitman
-            </div>
-            <i class="radio-icon ion-checkmark"></i>
-          </label>
-          <label class="item item-radio" item-icon-right nav-clear href="#/app/Popularity">
-            <input type="checkbox" name="group" id="wilson">
-            <div class="item-content">
-              <img src="img/W.png" width="20">
-              Wu/Wilcox
-            </div>
-            <i class="radio-icon ion-checkmark"></i>
-          </label>
-          <label class="item item-radio" item-icon-right nav-clear href="#/app/Popularity">
-            <input type="checkbox" name="group" id="rocky">
-            <div class="item-content">
-              <img src="img/R.png" width="20">
-              Rocky/Mathey
-            </div>
-            <i class="radio-icon ion-checkmark"></i>
-          </label>
-          <label class="item item-radio" item-icon-right nav-clear href="#/app/Popularity">
-            <input type="checkbox" name="group" id="forbes" ng-click="change()">
-            <div class="item-content">
-              <img src="img/F.png" width="20">
-              Forbes
-            </div>
-            <i class="radio-icon ion-checkmark"></i>
-          </label>
-          <label class="item item-radio" item-icon-right nav-clear href="#/app/Popularity">
-            <input type="checkbox" name="group" id="cjl">
-            <div class="item-content">
-              <img src="img/C.png" width="20">
-              CJL
-            </div>
-            <i class="radio-icon ion-checkmark"></i>
-          </label>
-          <label class="item item-radio item-icon-right nav-clear" href="#/app/Popularity">
-            <input type="checkbox" name="group" id="grad">
-            <div class="item-content">
-              <img src="img/G.png" width="20">
-              Grad College
-            </div>
-            <i class="radio-icon ion-checkmark"></i>
-          </label>
+  <ion-footer-bar style="height:100px;">
+    <ion-scroll direction="x" class="wide-as-needed">
+      <div class="list">
+        <label class="button button-clear item-radio" href="#/app/Popularity">
+          <input type="checkbox" name="group" id="whitman" ng-click="">
+            <div><img src="img/H.png" width="35" height="35" ng-class="col.icon"></img><div class="padding-top">Whitman</div></div>
+          <i class="radio-icon ion-checkmark"></i>
+        </label>
+        <label class="button button-clear item-radio" style="width:110px;height:85px;" href="#/app/Popularity">
+          <input type="checkbox" name="group" id="wilson" ng-click="">
+            <div><img src="img/W.png" width="35" height="35" ng-class="col.icon"></img><div class="padding-top">Wu/Wilcox</div></div>
+          <i class="radio-icon ion-checkmark"></i>
+        </label>
+        <label class="button button-clear item-radio" style="width:130px;height:85px;" href="#/app/Popularity">
+          <input type="checkbox" name="group" id="rocky" ng-click="">
+            <div><img src="img/R.png" width="35" height="35" ng-class="col.icon"></img><div class="padding-top">Rocky/Mathey</div></div>
+          <i class="radio-icon ion-checkmark"></i>
+        </label>
+        <label class="button button-clear item-radio" style="width:90px;height:85px;" href="#/app/Popularity">
+          <input type="checkbox" name="group" id="forbes" ng-click="">
+            <div><img src="img/F.png" width="35" height="35" ng-class="col.icon"></img><div class="padding-top">Forbes</div></div>
+          <i class="radio-icon ion-checkmark"></i>
+        </label>
+        <label class="button button-clear item-radio" style="width:80px;height:85px;" href="#/app/Popularity">
+          <input type="checkbox" name="group" id="cjl" ng-click="">
+            <div><img src="img/C.png" width="35" height="35" ng-class="col.icon"></img><div class="padding-top">CJL</div></div>
+          <i class="radio-icon ion-checkmark"></i>
+        </label>
+        <label class="button button-clear item-radio" style="width:110px;height:85px;" href="#/app/Popularity">
+          <input type="checkbox" name="group" id="grad" ng-click="">
+            <div><img src="img/G.png" width="35" height="35" ng-class="col.icon"></img><div class="padding-top">Grad College</div></div>
+          <i class="radio-icon ion-checkmark"></i>
+        </label>
+        <label class="button button-clear item-radio" style="width:110px;height:85px;" href="#/app/Popularity">
+          <input type="checkbox" name="group">
+            <div><i class="icon ion-ios-nutrition" ng-class="col.icon"></i><div class="padding-top">Vegetarian</div></div>
+          <i class="radio-icon ion-checkmark"></i>
+        </label>
+        <label class="button button-clear item-radio" style="width:90px;height:85px;" href="#/app/Popularity">
+          <input type="checkbox" name="group">
+            <div><i class="icon ion-leaf" ng-class="col.icon"></i><div class="padding-top">Vegan</div></div>
+          <i class="radio-icon ion-checkmark"></i>
+        </label>
+        <label class="button button-clear item-radio" style="width:90px;height:85px;">
+          <input type="checkbox" name="group">
+            <div><img src="img/n.png" width="35" height="35" ng-class="col.icon"></img><div class="padding-top">Nut Free</div></div>
+          <i class="radio-icon ion-checkmark"></i>
+        </label>
+        <label class="button button-clear item-radio" style="width:110px;height:85px;">
+          <input type="checkbox" name="group">
+            <div><img src="img/p.png" width="35" height="35" ng-class="col.icon"></img><div class="padding-top">Pork Free</div></div>
+          <i class="radio-icon ion-checkmark"></i>
+        </label>
+        
+      </div>
+    </ion-scroll>
+  </ion-footer-bar>
+<body>
 
-          <div class="item item-divider">
-            Diets
-          </div>
-          <label class="item item-radio" item-icon-right nav-clear href="#/app/Popularity">
-            <input type="checkbox" name="group">
-            <div class="item-content">
-              <i class="icon ion-ios-nutrition"></i>
-              Vegetarian
-            </div>
-            <i class="radio-icon ion-checkmark"></i>
-          </label>
-          <label class="item item-radio" item-icon-right nav-clear href="#/app/Popularity">
-            <input type="checkbox" name="group">
-            <div class="item-content">
-              <i class="icon ion-leaf"></i>
-              Vegan
-            </div>
-            <i class="radio-icon ion-checkmark"></i>
-          </label>
-          <label class="item item-radio" item-icon-right nav-clear>
-            <input type="checkbox" name="group">
-            <div class="item-content">
-              <img src="img/n.png" width="15">
-              Nut Free
-            </div>
-            <i class="radio-icon ion-checkmark"></i>
-          </label>
-          <label class="item item-radio" item-icon-right nav-clear>
-            <input type="checkbox" name="group">
-            <div class="item-content">
-              <img src="img/p.png" width="15">
-              Pork Free
-            </div>
-            <i class="radio-icon ion-checkmark"></i>
-          </label>
-        </div>
-      </ion-list>
-    </ion-content>
-  </ion-side-menu>
-</ion-side-menus>
+</html>
