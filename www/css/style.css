@@ -7,3 +7,8 @@
 .scroll { 
   min-width: 100%;
 }
+
+.button-custom,
+.button-custom .icon:before{
+  font-size: 15px !important;
+}

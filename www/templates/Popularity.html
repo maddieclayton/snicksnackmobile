@@ -1,9 +1,28 @@
 <ion-view view-title="Snick-Snack">
   <ion-content>
     <ion-list>
-      <!--href="#/app/Popularity/{{playlist.id}}" doesn't seem to be needed-->
-      <ion-item collection-repeat="item in displayedItems">
+        <ion-item collection-repeat="item in displayedItems" class="item-button-right" href="#/app/playlist">
         {{item['Name']}}
+
+		<button class="item-button-right button button-custom button-icon" style="width:30px;height:40px;min-height: 15px;min-width: 15px;padding:0px;">
+			<div><div class="padding-top"><i class="icon ion-chevron-down" ng-class="col.icon"></i></div></div>
+		</button>
+
+		<button class="item-button-right button button-custom button-icon" style="width:30px;height:20px;min-height:15px;min-width:15px;padding:0px;">
+			<div><i class="icon ion-chevron-up" ng-class="col.icon"></i><div class="padding-top"></div></div>
+		</button>
+
+        <!-- <div class="buttons no-padding">
+        	<div class="col no-padding">
+        		<button class="item-button-right button button-small topButton button-custom no-padding" style="width:10px;height:10px;">
+        		</button>
+        		<br>
+        		<button class="item-button-right button button-small bottomButton button-custom no-padding" style="width:10px;height:10px">
+        		</button>
+        	</div>
+        </div> -->
+
+        <span class="badge">0</span>
       </ion-item>
     </ion-list>
   </ion-content>
