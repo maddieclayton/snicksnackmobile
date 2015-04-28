@@ -12,3 +12,26 @@
 .button-custom .icon:before{
   font-size: 15px !important;
 }
+
+.header-color {
+	background-color: #37BFAD;
+}
+
+.circle {
+	width:50px;
+	height:50px;
+	border-radius:50%;
+	font-size:15px;
+	color:#FFF;
+	line-height:50px;
+	text-align:center;
+	background:#37BFAD;
+	border: 3px solid #FFF;
+	vertical-align: middle;
+}
+
+
+.active {
+	font-size:20px !important;
+	border: 6px solid #FFF !important;
+}

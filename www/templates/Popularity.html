@@ -1,28 +1,19 @@
-<ion-view view-title="Snick-Snack">
-  <ion-content>
+<ion-view view-title="SNIK-SNAK" style="color: #000">
+  <ion-content class="has-footer">
     <ion-list>
         <ion-item collection-repeat="item in displayedItems" class="item-button-right" item-height="70px">
         {{item['Name']}}
 
-		<button class="item-button-right button button-custom button-icon" style="width:40px;height:80px;min-height: 15px;min-width: 15px;padding:0px;">
-			<div><div class="padding-top"><i class="icon ion-chevron-down" ng-class="col.icon"></i></div></div>
+		<button class="button button-custom button-icon" style="margin-right:60px;width:40px;height:50px;min-height: 15px;min-width: 15px;padding:0px;">
+			<i class="icon ion-chevron-down"></i>
 		</button>
 
-		<button class="item-button-right button button-custom button-icon" style="width:40px;height:30px;min-height:15px;min-width:15px;padding:0px;">
-			<div><i class="icon ion-chevron-up" ng-class="col.icon"></i><div class="padding-top"></div></div>
+        <span class="badge" style="margin-right:0px;">0</span>
+
+        <button class="button button-custom button-icon" style="width:40px;height:50px;min-height:15px;min-width:15px;padding:0px;">
+			<i class="icon ion-chevron-up"></i>
 		</button>
 
-        <!-- <div class="buttons no-padding">
-        	<div class="col no-padding">
-        		<button class="item-button-right button button-small topButton button-custom no-padding" style="width:10px;height:10px;">
-        		</button>
-        		<br>
-        		<button class="item-button-right button button-small bottomButton button-custom no-padding" style="width:10px;height:10px">
-        		</button>
-        	</div>
-        </div> -->
-
-        <span class="badge">0</span>
       </ion-item>
     </ion-list>
   </ion-content>
