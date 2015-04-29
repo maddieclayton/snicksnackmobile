@@ -1,41 +1,48 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ionic'])
 
-.controller('PlaylistsCtrl', function($scope) {
-  var ip = '10.8.82.196';
-  //var items = JSON.parse(query result);
-  var items = [{'Name':'Nuggets', 'Hall':'Wilson', 'Votes':5, 'Id':123, 'Filters':['Vegan']},
-    {'Name':'Melon', 'Hall':'Forbes', 'Votes':2, 'Id':234, 'Filters':[]},
-    {'Name':'Chicken', 'Hall':'Forbes', 'Votes':2, 'Id':234, 'Filters':[]},
-    {'Name':'Beef', 'Hall':'Forbes', 'Votes':2, 'Id':234, 'Filters':[]},
-    {'Name':'Pork', 'Hall':'Forbes', 'Votes':2, 'Id':234, 'Filters':[]},
-    {'Name':'Lamb', 'Hall':'Forbes', 'Votes':2, 'Id':234, 'Filters':[]},
-    {'Name':'Ice Cream', 'Hall':'Forbes', 'Votes':2, 'Id':234, 'Filters':[]},
-    {'Name':'Brownie', 'Hall':'Forbes', 'Votes':2, 'Id':234, 'Filters':[]}];
+.controller('PlaylistsCtrl', function($scope, $http) {
+  var items = [];
   var displayedItems = [];
-  var halls = []; //Forbes, Wilson, Rocky, Whitman, CJL, Grad
-  var filters = []; //
-  change('', '');
-  $scope.displayedItems = displayedItems;
+  var halls = []; //roma, wucox, whitman, forbes, grad, cjl
+  var filters = []; //vgt, vgn
+  var porkfree = false;
 
-  //click event listeners for filter buttons
-  document.getElementById ("forbes").addEventListener ("click", forbesFilter, false);
-  document.getElementById ("wilson").addEventListener ("click", wilsonFilter, false);
-  document.getElementById ("rocky").addEventListener ("click", rockyFilter, false);
-  document.getElementById ("whitman").addEventListener ("click", whitmanFilter, false);
-  document.getElementById ("cjl").addEventListener ("click", cjlFilter, false);
-  document.getElementById ("grad").addEventListener ("click", gradFilter, false);
+  $http.get('http://sniksnak.herokuapp.com/api/get/').then(function(resp) {
+    console.log('Success', resp);
+    // For JSON responses, resp.data contains the result
+    items = resp.data;
+    change('', '');
+  }, function(err) {
+    console.error('ERR', err, err.status);
+    // err.status will contain the status code
+  });
 
-  //functions called by listeners
-  function forbesFilter() { change('hall', 'Forbes'); }
-  function wilsonFilter() { change('hall', 'Wilson'); }
-  function rockyFilter() { change('hall', 'Rocky'); }
-  function whitmanFilter() { change('hall', 'Whitman'); }
-  function cjlFilter() { change('hall', 'CJL'); }
-  function gradFilter() { change('hall', 'Grad'); }
+  //click event listeners for filter button
+  document.getElementById ('forbes').addEventListener ('click',
+    function() {change('hall', 'Forbes');}, false);
+  document.getElementById ('wucox').addEventListener ('click',
+    function() {change('hall', 'Wu/Wilcox');}, false);
+  document.getElementById ('roma').addEventListener ('click',
+    function() {change('hall', 'Rocky/Mathey');}, false);
+  document.getElementById ('whitman').addEventListener ('click',
+    function() {change('hall', 'Whitman');}, false);
+  document.getElementById ('cjl').addEventListener ('click', 
+    function() {change('hall', 'CJL');}, false);
+  document.getElementById ('grad').addEventListener ('click', 
+    function() {change('hall', 'Grad');}, false);
+
+  document.getElementById ('vgt').addEventListener ('click', 
+    function() {change('filter', 'Vegetarian');}, false);
+  document.getElementById ('vgn').addEventListener ('click', 
+    function() {change('filter', 'Vegan');}, false);
+  
+  document.getElementById ('porkfree').addEventListener ('click', 
+    function() {
+      porkfree = !porkfree;
+      change('', '');}, false);
 
   //called on load and after each filter click
   function change(type, button) {
-    //console.log('change ' + button); //testing
     var index = -2;
     //update hall/filter
     if (type == 'hall') {
@@ -64,15 +71,25 @@ angular.module('starter.controllers', [])
           break;
         }
       }
+      if (porkfree && itemFilters.indexOf('Pork') != -1)
+        addItem = false;
       if (halls.length != 0 && halls.indexOf(item['Hall']) == -1)
         addItem = false;
       if (addItem == true)
         displayedItems.push(item);
     }
-    /* print for debugging
-    console.log(halls.length);
-    console.log(filters.length);
-    console.log(displayedItems.length); */
+    $scope.displayedItems = displayedItems;
+  }
+
+  $scope.downvote = function(item) {
+    console.log('downvote', item['Name']);
+    item['Votes']--;
+    $scope.displayedItems = displayedItems;
+  }
+
+  $scope.upvote = function(item) {
+    console.log('upvote', item['Name']);
+    item['Votes']++;
     $scope.displayedItems = displayedItems;
   }
 })
