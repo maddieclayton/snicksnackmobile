@@ -8,12 +8,12 @@ angular.module('starter.controllers', ['ionic'])
   var porkfree = false;
 
   $http.get('http://sniksnak.herokuapp.com/api/get/').then(function(resp) {
-    console.log('Success', resp);
+    console.log('Get Success', resp);
     // For JSON responses, resp.data contains the result
     items = resp.data;
     change('', '');
   }, function(err) {
-    console.error('ERR', err, err.status);
+    console.error('Get Error', err, err.status);
     // err.status will contain the status code
   });
 
@@ -82,15 +82,25 @@ angular.module('starter.controllers', ['ionic'])
   }
 
   $scope.downvote = function(item) {
-    console.log('downvote', item['Name']);
+    //console.log('downvote', item['Name']);
     item['Votes']--;
     $scope.displayedItems = displayedItems;
+
+    $http.post('http://sniksnak.herokuapp.com/api/dec/' + item['Id']).then(
+      function(resp) { console.log('Post Success', resp); }, 
+      function(err) { console.error('Post Error', err, err.status);
+    });
   }
 
   $scope.upvote = function(item) {
-    console.log('upvote', item['Name']);
+    //console.log('upvote', item['Name']);
     item['Votes']++;
     $scope.displayedItems = displayedItems;
+
+    $http.post('http://sniksnak.herokuapp.com/api/inc/' + item['Id']).then(
+      function(resp) { console.log('Post Success', resp); },
+      function(err) { console.error('Post Error', err, err.status);
+    });
   }
 })
 .controller('PlaylistCtrl', function($scope, $stateParams) {
