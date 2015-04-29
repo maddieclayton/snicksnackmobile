@@ -1,28 +1,32 @@
 <html ng-app="ionicApp">
 <body>
   <ion-header>
-  <script>
-  $('#button').click(function () {
-    $("#whitman").toggleClass('active');
-  });
-  </script>
-    <ion-nav-bar class="header-color">
-    </ion-nav-bar>
-    <ion-nav-view name="menuContent"></ion-nav-view>
+    <script>
+      function change(name)
+      {
+        alert("Working!");
+        name.className = "circle-highlight";
+        \\var elem = document.getElementById("wh");
+        \\if (elem.className=="circle-highlight") this.className = "circle";
+        \\else elem.className = "circle-highlight";
+      }
+    </script>
+    <ion-nav-view name="menuContent">
+    </ion-nav-view>
   </ion-header>
 
   <ion-footer-bar class="header-color" style="height:90px;">
     <ion-scroll direction="x" class="wide-as-needed">
       <div class="list">
 
-        <label class="button item-radio" style="background-color: #37BFAD;" href="#/app/Popularity">
-          <input type="checkbox" name="group" id="whitman" ng-click="">
-            <div id="colormethis" class="circle">Wh</div><div>Whitman</div>
+        <label class="button item-radio" style="background-color: #37BFAD;" href="#/app/Popularity" onclick="change(wh)">
+          <input type="checkbox" name="group" id="whitman" ng-click="change(wh)" onclick="change(wh)">
+            <div id="wh" class="circle" onclick="this.classname='circle-highlight'">Wh</div><div>Whitman</div>
         </label>
         <label class="button item-radio" style="background-color: #37BFAD;" href="#/app/Popularity">
-          <input type="checkbox" name="group" id="wilson" ng-click="">
+          <input type="checkbox" name="group" id="wilson" ng-click="change()">
             <div class="circle">Wu</div><div>Wu/Wilcox</div>
-          <i class="radio-icon ion-checkmark"></i>
+          
         </label>
         <label class="button item-radio" style="background-color: #37BFAD;" href="#/app/Popularity">
           <input type="checkbox" name="group" id="rocky" ng-click="">
@@ -46,17 +50,12 @@
         </label>
         <label class="button item-radio" style="background-color: #37BFAD;" href="#/app/Popularity">
           <input type="checkbox" name="group">
-            <div class="circle">V</div><div>Vegitarian</div>
+            <div class="circle">V</div><div>Vegetarian</div>
           <i class="radio-icon ion-checkmark"></i>
         </label>
         <label class="button item-radio" style="background-color: #37BFAD;" href="#/app/Popularity">
           <input type="checkbox" name="group">
             <div class="circle">Ve</div><div>Vegan</div>
-          <i class="radio-icon ion-checkmark"></i>
-        </label>
-        <label class="button item-radio" style="background-color: #37BFAD;">
-          <input type="checkbox" name="group">
-            <div class="circle">N</div><div>Nut Free</div>
           <i class="radio-icon ion-checkmark"></i>
         </label>
         <label class="button item-radio" style="background-color: #37BFAD;">

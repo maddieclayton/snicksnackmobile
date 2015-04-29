@@ -1,18 +1,30 @@
-<ion-view view-title="SNIK-SNAK" style="color: #000">
-  <ion-content class="has-footer">
+<ion-view style="color: #37BFAD">
+  
+  <label class="item menu-custom item-input item-select" style="background-color: #37BFAD;">
+    <div class="input-label">
+      SNIK-SNAK
+    </div>
+    <select>
+      <option>Breakfast</option>
+      <option selected>Lunch</option>
+      <option>Dinner</option>
+    </select>
+  </label>
+  
+  <ion-content class="has-footer has-header">
     <ion-list>
-        <ion-item collection-repeat="item in displayedItems" class="item-button-right" item-height="70px">
-        {{item['Name']}}
+      <ion-item collection-repeat="item in displayedItems" class="item-button-right" item-height="70px" style="background-color:#777777">
+        <font size="3" color="black">{{item['Name']}}</font><br><font size="3" color="yellow">{{item['Hall']}}</font><font size="3" color="yellow">{{item['Filters']}}</font>
 
-		<button class="button button-custom button-icon" style="margin-right:60px;width:40px;height:50px;min-height: 15px;min-width: 15px;padding:0px;">
-			<i class="icon ion-chevron-down"></i>
-		</button>
+		    <button class="button button-custom button-icon" style="margin-right:60px;width:40px;height:50px;min-height: 15px;min-width: 15px;padding:0px;">
+			   <i class="icon ion-chevron-down"></i>
+		    </button>
 
-        <span class="badge" style="margin-right:0px;">0</span>
+        <span class="badge" style="margin-right:0px; color:black">{{item['Votes']}}</span>
 
         <button class="button button-custom button-icon" style="width:40px;height:50px;min-height:15px;min-width:15px;padding:0px;">
-			<i class="icon ion-chevron-up"></i>
-		</button>
+			   <i class="icon ion-chevron-up"></i>
+		    </button>
 
       </ion-item>
     </ion-list>

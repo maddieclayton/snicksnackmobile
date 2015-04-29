@@ -13,6 +13,11 @@
   font-size: 15px !important;
 }
 
+.menu-custom,
+.menu-custom .icon:before{
+  font-size: 25px !important;
+}
+
 .header-color {
 	background-color: #37BFAD;
 }
@@ -28,10 +33,21 @@
 	background:#37BFAD;
 	border: 3px solid #FFF;
 	vertical-align: middle;
+
 }
 
 
-.active {
+.circle-highlight {
+	width:50px !important;
+	height:50px !important;
+	border-radius:50% !important;
 	font-size:20px !important;
+	color:#FFF !important;
+	line-height:50px !important;
+	text-align:top !important;
+	background:#37BFAD !important;
 	border: 6px solid #FFF !important;
+	vertical-align: top !important;
+	margin-left: 0px !important;
+	margin: 0px;
 }
