@@ -15,22 +15,23 @@
     </ion-nav-view>
   </ion-header>
 
-  <ion-footer-bar class="header-color" style="height:90px;">
+  <ion-footer-bar class="header-color" style="height:100px;">
     <ion-scroll direction="x" class="wide-as-needed">
       <div class="list">
 
-        <label class="button item-radio" style="background-color: #37BFAD;" href="#/app/Popularity" id="whitman" ng-click="" onclick="change(wh)">
-          <input type="checkbox" onclick="change(wh)">
-            <div id="wh" class="circle" onclick="this.classname='circle-highlight'">Wh</div><div>Whitman</div>
+        <label class="button item-radio" style="background-color: #37BFAD;" href="#/app/Popularity" id="whitman" ng-click="">
+          <input type="checkbox">
+            <div class="circle">Wh</div><div>Whitman</div>
+          <i class="radio-icon ion-checkmark"></i>
         </label>
         <label class="button item-radio" style="background-color: #37BFAD;" href="#/app/Popularity" id="wucox" ng-click="">
-          <input type="checkbox" name="group">
-            <div class="circle">Wu</div><div>Wu/Wilcox</div>
+          <input type="checkbox">
+            <div class="circle">Wu</div><div style="line-height:150%;">Wu/<br>Wilcox</div>
           <i class="radio-icon ion-checkmark"></i>
         </label>
         <label class="button item-radio" style="background-color: #37BFAD;" href="#/app/Popularity" id="roma" ng-click="">
           <input type="checkbox">
-            <div class="circle">R/M</div><div>Rocky/Mathey</div>
+            <div class="circle">R/M</div><div style="line-height:150%;">Rocky/<br>Mathey</div>
           <i class="radio-icon ion-checkmark"></i>
         </label>
         <label class="button item-radio" style="background-color: #37BFAD;" href="#/app/Popularity" id="forbes" ng-click="">
@@ -45,7 +46,7 @@
         </label>
         <label class="button item-radio" style="background-color: #37BFAD;" href="#/app/Popularity" id="grad" ng-click="">
           <input type="checkbox">
-            <div class="circle">G</div><div>Grad College</div>
+            <div class="circle">G</div><div style="line-height:150%;">Grad<br>College</div>
           <i class="radio-icon ion-checkmark"></i>
         </label>
         <label class="button item-radio" style="background-color: #37BFAD;" href="#/app/Popularity" id="vgt" ng-click="">
@@ -60,7 +61,12 @@
         </label>
         <label class="button item-radio" style="background-color: #37BFAD;" href="#/app/Popularity" id="porkfree" ng-click="">
           <input type="checkbox">
-            <div class="circle">P</div><div>Pork Free</div>
+            <div class="circle">P</div><div style="line-height:150%;">Pork<br>Free</div>
+          <i class="radio-icon ion-checkmark"></i>
+        </label>
+        <label class="button item-radio" style="background-color: #37BFAD;" href="#/app/Popularity" id="nutfree" ng-click="">
+          <input type="checkbox">
+            <div class="circle">N</div><div style="line-height:150%;">Nut<br>Free</div>
           <i class="radio-icon ion-checkmark"></i>
         </label>
       </div>
