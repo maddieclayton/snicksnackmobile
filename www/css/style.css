@@ -22,12 +22,9 @@
 	background-color: #37BFAD;
 }
 
-.no-padding {
-    padding: 0px !important;
-}
-
-.br1 {
-   line-height: 150% !important;
+ion-view.pane {
+	background: url("../img/bg3.png") no-repeat center center fixed;
+    background-size: cover;
 }
 
 .circle {
@@ -36,14 +33,13 @@
 	border-radius:50%;
 	font-size:15px;
 	color:#FFF;
-	line-height:50px;
+	line-height:45px;
 	text-align:center;
-	background:#37BFAD;
-	border: 3px solid #FFF;
+	background-color: rgba(0, 0, 0, 0);
+	border: 2px solid #FFF;
 	vertical-align: middle;
 
 }
-
 
 .circle-highlight {
 	width:50px !important;
@@ -58,4 +54,10 @@
 	vertical-align: top !important;
 	margin-left: 0px !important;
 	margin: 0px;
+}
+
+.item-trns {
+	border-color: rgba(0, 0, 0, 0);
+	background-color: rgba(0, 0, 0, 0);
+	color: white; 
 }

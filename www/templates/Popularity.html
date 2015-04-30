@@ -1,29 +1,29 @@
-<ion-view style="color: #37BFAD">
+<ion-view>
   
-  <label class="item menu-custom item-input item-select" style="background-color: #37BFAD;">
-    <div class="input-label">
-      SNIK-SNAK
+  <label class="item menu-custom item-input item-select" style="background: url(/img/bg1.jpg) no-repeat center center fixed; font-weight: 900; font-stretch: expanded;">
+    <div class="input-label" style="color:white; font-weight: 900; font-family: 'Oswald', sans-serif;">
+      <font size="6">SNIKSNAK</font>
     </div>
-    <select>
+    <select style="background: url('../img/bg1.png') no-repeat center center fixed; font-weight: 900; font-stretch: expanded; color:white; font-weight: 900; font-family: 'Oswald', sans-serif; font-size=6">
       <option>Breakfast</option>
       <option selected>Lunch</option>
       <option>Dinner</option>
     </select>
   </label>
   
-  <ion-content class="has-header" style="margin-bottom:55px;">
+  <ion-content style="margin-bottom:55px; margin-top:65px;">
     <ion-list>
-      <ion-item collection-repeat="item in displayedItems" class="item-button-right" item-height="70px" style="background-color:#777777">
-        <font size="3" color="black">{{item['Name']}}</font><br><font size="3" color="yellow">{{item['Hall']}}</font><font size="3" color="yellow"> {{item['Filters']}}</font>
+      <ion-item collection-repeat="item in displayedItems" class="item-button-right item-trns " item-height="70px">
+        <font size="4" color="white" style="font-weight: 900; font-family: 'Oswald', sans-serif;">{{item['Name']}}</font><br><font size="2" color="white" style="font-family: 'Oswald', sans-serif;"> {{item['Hall']}}</font><font size="2" color="white" style="font-family: 'Oswald', sans-serif;"> {{item['Filters']}}</font>
 
-		    <button class="button button-custom button-icon" style="margin-right:60px;width:40px;height:50px;min-height: 15px;min-width: 15px;padding:0px;" ng-click="downvote(item);">
-			   <i class="icon ion-chevron-down"></i>
+		    <button class="button button-custom button-icon" style="margin-right:60px;width:40px;height:50px;min-height: 15px;min-width: 15px;padding:0px; margin-top:15px;" ng-click="downvote(item);">
+			   <i class="icon ion-chevron-down" style="color:white;"></i>
 		    </button>
 
-        <span class="badge" style="margin-right:0px; color:black">{{item['Votes']}}</span>
+        <span class="badge" style="font-weight: 900; margin-right:0px; color:white; font-family: 'Oswald', sans-serif; line-height:50px;">{{item['Votes']}}</span>
 
-        <button class="button button-custom button-icon" style="width:40px;height:50px;min-height:15px;min-width:15px;padding:0px;" ng-click="upvote(item);">
-			   <i class="icon ion-chevron-up"></i>
+        <button class="button button-custom button-icon" style="width:40px;height:50px;min-height:15px;min-width:15px;padding:0px; margin-top:15px;" ng-click="upvote(item);">
+			   <i class="icon ion-chevron-up" style="color:white;"></i>
 		    </button>
 
       </ion-item>
