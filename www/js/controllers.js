@@ -82,15 +82,25 @@ angular.module('starter.controllers', ['ionic'])
   }
 
   $scope.downvote = function(item) {
-    console.log('downvote', item['Name']);
+    //console.log('downvote', item['Name']);
     item['Votes']--;
     $scope.displayedItems = displayedItems;
+
+    $http.post('http://sniksnak.herokuapp.com/api/dec/' + item['Id']).then(
+      function(resp) { console.log('Post Success', resp); }, 
+      function(err) { console.error('Post Error', err, err.status);
+    });
   }
 
   $scope.upvote = function(item) {
-    console.log('upvote', item['Name']);
+    //console.log('upvote', item['Name']);
     item['Votes']++;
     $scope.displayedItems = displayedItems;
+
+    $http.post('http://sniksnak.herokuapp.com/api/inc/' + item['Id']).then(
+      function(resp) { console.log('Post Success', resp); },
+      function(err) { console.error('Post Error', err, err.status);
+    });
   }
 })
 .controller('PlaylistCtrl', function($scope, $stateParams) {
