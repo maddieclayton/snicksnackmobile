@@ -8,12 +8,12 @@ angular.module('starter.controllers', ['ionic'])
   var porkfree = false;
 
   $http.get('http://sniksnak.herokuapp.com/api/get/').then(function(resp) {
-    console.log('Success', resp);
+    console.log('Get Success', resp);
     // For JSON responses, resp.data contains the result
     items = resp.data;
     change('', '');
   }, function(err) {
-    console.error('ERR', err, err.status);
+    console.error('Get Error', err, err.status);
     // err.status will contain the status code
   });
 
