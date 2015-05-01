@@ -1,19 +1,19 @@
 <ion-view>
   
-  <label class="item menu-custom item-input item-select" style="background: url(/img/bg1.jpg) no-repeat center center fixed; font-weight: 900; font-stretch: expanded;">
+  <label class="item menu-custom item-input item-select" style="background: url(../img/bg.png) no-repeat center center fixed; font-weight: 900; font-stretch: expanded;">
     <div class="input-label" style="color:white; font-weight: 900; font-family: 'Oswald', sans-serif;">
       <font size="6">SNIKSNAK</font>
     </div>
-    <select style="background: url('../img/bg1.png') no-repeat center center fixed; font-weight: 900; font-stretch: expanded; color:white; font-weight: 900; font-family: 'Oswald', sans-serif; margin-top:10px;">
+    <select style="background-color: rgba(255,255,255,0.3); font-weight: 900; font-stretch: expanded; color:white; font-weight: 900; font-family: 'Oswald', sans-serif; margin-top:10px;">
       <option>Breakfast</option>
       <option selected>Lunch</option>
       <option>Dinner</option>
     </select>
   </label>
   
-  <ion-content style="margin-bottom:55px; margin-top:65px;">
+  <ion-content style="margin-bottom:55px; margin-top:70px;">
     <ion-list>
-      <ion-item collection-repeat="item in displayedItems" class="item-button-right item-trns " item-height="70px">
+      <ion-item collection-repeat="item in displayedItems" class="item-button-right item-trns1" item-height="70px">
         <font size="4" color="white" style="font-weight: 900; font-family: 'Oswald', sans-serif;">{{item['Name']}}</font><br><font size="2" color="white" style="font-family: 'Oswald', sans-serif;"> {{item['Hall']}}</font><font size="2" color="white" style="font-family: 'Oswald', sans-serif;"> {{item['Filters']}}</font>
 
 		    <button class="button button-custom button-icon" style="margin-right:60px;width:40px;height:50px;min-height: 15px;min-width: 15px;padding:0px; margin-top:15px;" ng-click="downvote(item);">

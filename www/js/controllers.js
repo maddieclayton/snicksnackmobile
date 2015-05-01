@@ -19,17 +19,17 @@ angular.module('starter.controllers', ['ionic'])
 
   //click event listeners for filter button
   document.getElementById ('forbes').addEventListener ('click',
-    function() {change('hall', 'Forbes');}, false);
+    function() {maddiesucks(document.getElementById ('forbes'));change('hall', 'Forbes');}, false);
   document.getElementById ('wucox').addEventListener ('click',
-    function() {change('hall', 'Wu/Wilcox');}, false);
+    function() {maddiesucks(document.getElementById ('wucox'));change('hall', 'Wu/Wilcox');}, false);
   document.getElementById ('roma').addEventListener ('click',
-    function() {change('hall', 'Rocky/Mathey');}, false);
+    function() {maddiesucks(document.getElementById ('roma'));change('hall', 'Rocky/Mathey');}, false);
   document.getElementById ('whitman').addEventListener ('click',
-    function() {change('hall', 'Whitman');}, false);
+    function() {maddiesucks(document.getElementById ('whitman'));change('hall', 'Whitman');}, false);
   document.getElementById ('cjl').addEventListener ('click', 
-    function() {change('hall', 'CJL');}, false);
+    function() {maddiesucks(document.getElementById ('cjl'));change('hall', 'CJL');}, false);
   document.getElementById ('grad').addEventListener ('click', 
-    function() {change('hall', 'Grad');}, false);
+    function() {maddiesucks(document.getElementById ('grad'));change('hall', 'Grad');}, false);
 
   document.getElementById ('vgt').addEventListener ('click', 
     function() {change('filter', 'Vegetarian');}, false);
@@ -41,10 +41,17 @@ angular.module('starter.controllers', ['ionic'])
       porkfree = !porkfree;
       change('', '');}, false);
 
+  function maddiesucks(button) {
+    button = angular.element(button.querySelector('.circle'));
+    button.toggleClass('highlight');
+  }
+
+
   //called on load and after each filter click
   function change(type, button) {
     var index = -2;
     //update hall/filter
+
     if (type == 'hall') {
       index = halls.indexOf(button);
       if(index == -1)
