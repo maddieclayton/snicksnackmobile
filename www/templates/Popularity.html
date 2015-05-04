@@ -9,7 +9,7 @@
     <div class="input-label" style="color:white; font-weight: 900; font-family: 'Oswald', sans-serif;">
       <font size="6">SNIKSNAK</font>
     </div>
-    <select style="background-color: rgba(0,0,0,0.5); font-weight: 900; font-stretch: expanded; color:white; font-weight: 900; font-family: 'Oswald', sans-serif; margin-top:10px;">
+    <select id="mealSelect" ng-model="meal" ng-change="mealChange();" style="background-color: rgba(0,0,0,0.5); font-weight: 900; font-stretch: expanded; color:white; font-weight: 900; font-family: 'Oswald', sans-serif; margin-top:10px;">
       <option>Breakfast</option>
       <option selected>Lunch</option>
       <option>Dinner</option>

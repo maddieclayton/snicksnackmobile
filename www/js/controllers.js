@@ -6,6 +6,7 @@ angular.module('starter.controllers', ['ionic'])
   var halls = []; //roma, wucox, whitman, forbes, grad, cjl
   var filters = []; //vgt, vgn
   var porkfree = false;
+  var meal = 'l';
 
   $http.get('http://sniksnak.herokuapp.com/api/get/').then(function(resp) {
     console.log('Get Success', resp);
@@ -46,7 +47,6 @@ angular.module('starter.controllers', ['ionic'])
     button.toggleClass('highlight');
   }
 
-
   //called on load and after each filter click
   function change(type, button) {
     var index = -2;
@@ -71,17 +71,22 @@ angular.module('starter.controllers', ['ionic'])
     for (i = 0; i < items.length; i++) {
       item = items[i];
       var addItem = true;
-      itemFilters = item['Filters'];
-      for (j = 0; j < filters.length; j++) {
-        if (itemFilters.indexOf(filters[j]) == -1) {
-          addItem = false;
-          break;
+
+      if (meal == item['Meal']) {
+        itemFilters = item['Filters'];
+        for (j = 0; j < filters.length; j++) {
+          if (itemFilters.indexOf(filters[j]) == -1) {
+            addItem = false;
+            break;
+          }
         }
+        if (addItem && porkfree && itemFilters.indexOf('Pork') != -1)
+          addItem = false;
+        if (addItem && halls.length != 0 && halls.indexOf(item['Hall']) == -1)
+          addItem = false;
       }
-      if (porkfree && itemFilters.indexOf('Pork') != -1)
-        addItem = false;
-      if (halls.length != 0 && halls.indexOf(item['Hall']) == -1)
-        addItem = false;
+      else {addItem = false;}
+
       if (addItem == true)
         displayedItems.push(item);
     }
@@ -94,7 +99,7 @@ angular.module('starter.controllers', ['ionic'])
     $scope.displayedItems = displayedItems;
 
     $http.post('http://sniksnak.herokuapp.com/api/dec/' + item['Id']).then(
-      function(resp) { console.log('Post Success', resp); }, 
+      function(resp) { /*console.log('Post Success', resp);*/ }, 
       function(err) { console.error('Post Error', err, err.status);
     });
   }
@@ -105,10 +110,20 @@ angular.module('starter.controllers', ['ionic'])
     $scope.displayedItems = displayedItems;
 
     $http.post('http://sniksnak.herokuapp.com/api/inc/' + item['Id']).then(
-      function(resp) { console.log('Post Success', resp); },
+      function(resp) { /*console.log('Post Success', resp);*/ },
       function(err) { console.error('Post Error', err, err.status);
     });
   }
+
+  $scope.mealChange = function() {
+    newMeal = document.getElementById('mealSelect').selectedIndex;
+    console.log('mealChange', newMeal);
+    if (newMeal == 0) {meal = 'b';}
+    else if (newMeal == 1) {meal = 'l';}
+    else if (newMeal == 2) {meal = 'd';}
+    change('','');
+  }
+
 })
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 });
