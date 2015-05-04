@@ -18,10 +18,6 @@
   font-size: 25px !important;
 }
 
-.header-color {
-	background-color: #37BFAD;
-}
-
 ion-view.pane {
 	background: url("../img/bg.png") no-repeat center center fixed;
     background-size: cover;
