@@ -1,15 +1,6 @@
 <html ng-app="ionicApp">
 <body>
   <ion-header style="height:20px; width:100px;">
-  <script>
-    function highlightFilter(value) {
-    var id = "div[id='" + value + "']"
-    if ($(id).hasClass('highlight'))
-      $(id).removeClass('highlight');
-    else
-      $(id).addClass('highlight');
-    }
-  </script>
     <ion-nav-view name="menuContent">
     </ion-nav-view>
   </ion-header>
@@ -18,57 +9,45 @@
     <ion-scroll direction="x" class="wide-as-needed">
       <div class="list">
 
-        <label class="button item-radio item-trns" href="#/app/Popularity" id="whitman" ng-click="">
-          <input type="checkbox" onclick="highlightFilter(wh)">
-            <div class="circle" style="font-weight: 900; font-family: 'Oswald', sans-serif;">Wh</div><div style="font-weight: 900; font-family: 'Oswald', sans-serif;">Whitman</div>
-        
-        </label>
-        <label class="button item-radio item-trns" href="#/app/Popularity" id="wucox" ng-click="">
-          <input type="checkbox">
-            <div class="circle" style="font-weight: 900; font-family: 'Oswald', sans-serif;">Wu</div><div style="line-height:150%; font-weight: 900; font-family: 'Oswald', sans-serif;">Wu/<br>Wilcox</div>
-         
-        </label>
-        <label class="button item-radio item-trns" href="#/app/Popularity" id="roma" ng-click="">
-          <input type="checkbox">
-            <div class="circle" style="font-weight: 900; font-family: 'Oswald', sans-serif;">R/M</div><div style="font-weight: 900; line-height:150%; font-family: 'Oswald', sans-serif;">Rocky/<br>Mathey</div>
-        
-        </label>
-        <label class="button item-radio item-trns" href="#/app/Popularity" id="forbes" ng-click="">
-          <input type="checkbox">
-            <div class="circle" style="font-weight: 900; font-family: 'Oswald', sans-serif;">F</div><div style="font-weight: 900; font-family: 'Oswald', sans-serif;">Forbes</div>
-        
-        </label>
-        <label class="button item-radio item-trns" href="#/app/Popularity" id="cjl" ng-click="">
-          <input type="checkbox">
-            <div class="circle" style="font-weight: 900; font-family: 'Oswald', sans-serif;">CJL</div><div style="font-weight: 900; font-family: 'Oswald', sans-serif;">CJL</div>
-     
-        </label>
-        <label class="button item-radio item-trns" href="#/app/Popularity" id="grad" ng-click="">
-          <input type="checkbox">
-            <div class="circle" style="font-weight: 900; font-family: 'Oswald', sans-serif;">G</div><div style="font-weight: 900; line-height:150%; font-family: 'Oswald', sans-serif;
-          ">Grad<br>College</div>
-   
-        </label>
-        <label class="button item-radio item-trns" href="#/app/Popularity" id="vgt" ng-click="">
-          <input type="checkbox">
-            <div class="circle" style="font-weight: 900; font-family: 'Oswald', sans-serif;">V</div><div style="font-weight: 900; font-family: 'Oswald', sans-serif;">Vegetarian</div>
-      
-        </label>
-        <label class="button item-radio item-trns" href="#/app/Popularity" id="vgn" ng-click="">
-          <input type="checkbox">
-            <div class="circle" style="font-weight: 900; font-family: 'Oswald', sans-serif;">Ve</div><div style="font-weight: 900; font-family: 'Oswald', sans-serif;">Vegan</div>
-     
-        </label>
-        <label class="button item-radio item-trns" href="#/app/Popularity" id="porkfree" ng-click="">
-          <input type="checkbox">
-            <div class="circle" style="font-weight: 900; font-family: 'Oswald', sans-serif;">P</div><div style="line-height:150%; font-weight: 900; font-family: 'Oswald', sans-serif;">Pork<br>Free</div>
+        <div class="button item-trns" href="#/app/Popularity" id="whitman" ng-click="">
+          <div class="circle">Wh</div><div class="food_label">Whitman</div>
+        </div>
 
-        </label>
-        <label class="button item-radio item-trns" href="#/app/Popularity" id="nutfree" ng-click="">
-          <input type="checkbox">
-            <div class="circle" style="font-weight: 900; font-family: 'Oswald', sans-serif;">N</div><div style="line-height:150%; font-weight: 900; font-family: 'Oswald', sans-serif;">Nut<br>Free</div>
-
-        </label>
+        <div class="button item-trns" href="#/app/Popularity" id="wucox" ng-click="">
+            <div class="circle">Wu</div><div class="food_label">Wu/<br>Wilcox</div>
+        </div>
+        
+        <div class="button item-trns" href="#/app/Popularity" id="roma" ng-click="">
+            <div class="circle">R/M</div><div class="food_label">Rocky/<br>Mathey</div>
+        </div>
+        
+        <div class="button item-trns" href="#/app/Popularity" id="forbes" ng-click="">
+            <div class="circle">F</div><div class="food_label">Forbes</div>
+        </div>
+        
+        <div class="button item-trns" href="#/app/Popularity" id="cjl" ng-click="">
+            <div class="circle">CJL</div><div class="food_label">CJL</div>
+        </div>
+        
+        <div class="button item-trns" href="#/app/Popularity" id="grad" ng-click="">
+            <div class="circle">G</div><div class="food_label">Grad<br>College</div>
+        </div>
+        
+        <div class="button item-trns" href="#/app/Popularity" id="vgt" ng-click="">
+            <div class="circle">V</div><div class="food_label">Vegetarian</div>
+        </div>
+        
+        <div class="button item-trns" href="#/app/Popularity" id="vgn" ng-click="">
+            <div class="circle">Ve</div><div class="food_label">Vegan</div>
+        </div>
+        
+        <div class="button item-trns" href="#/app/Popularity" id="porkfree" ng-click="">
+            <div class="circle">P</div><div class="food_label">Pork<br>Free</div>
+        </div>
+        
+        <div class="button item-trns" href="#/app/Popularity" id="nutfree" ng-click="">
+            <div class="circle">N</div><div class="food_label">Nut<br>Free</div>
+        </div>
       </div>
     </ion-scroll>
   </ion-footer-bar>

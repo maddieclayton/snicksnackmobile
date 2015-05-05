@@ -33,12 +33,21 @@ ion-view.pane {
 	text-align:center;
 	background-color: rgba(255,255,255,0.3);
 	vertical-align: middle;
+	font-weight: 900; 
+	font-family: 'Oswald', sans-serif;
 
 }
 
 .highlight {
 	border: 2px white solid;
     margin: 0px auto;
+}
+
+.food_label {
+	line-height:150%;
+	font-weight: 900;
+	font-family: 'Oswald', sans-serif;
+	color: white;
 }
 
 .item-trns1 {
