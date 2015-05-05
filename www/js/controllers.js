@@ -6,13 +6,15 @@ angular.module('starter.controllers', ['ionic'])
   var halls = []; //roma, wucox, whitman, forbes, grad, cjl
   var filters = []; //vgt, vgn
   var porkfree = false;
-  var meal = 'l';
+  var meal = 'l'; //breakfast 'b', lunch 'l', dinner 'd'
+  var votes = {}; //id: true/false for key: value
 
   $http.get('http://sniksnak.herokuapp.com/api/get/').then(function(resp) {
     console.log('Get Success', resp);
     // For JSON responses, resp.data contains the result
     items = resp.data;
-    change('', '');
+    //change('', '');
+    getCurrentMeal();
   }, function(err) {
     console.error('Get Error', err, err.status);
     // err.status will contain the status code
@@ -45,6 +47,35 @@ angular.module('starter.controllers', ['ionic'])
   function maddiesucks(button) {
     button = angular.element(button.querySelector('.circle'));
     button.toggleClass('highlight');
+  }
+
+  function getCurrentMeal() {
+    var time = new Date();
+    var hour = time.getHours();
+    var day = time.getDay();
+    var newIndex = '';
+
+    if (hour < 11) {
+      if (day == 0 || day == 6) {
+        newIndex = '1';
+        meal = 'l';
+      }
+      else {
+        newIndex = '0';
+        meal = 'b';
+      }
+    }
+    else if (hour < 14) {
+      newIndex = '1';
+      meal = 'l';
+    }
+    else {
+      newIndex = '2';
+      meal = 'd';
+    }
+
+    document.getElementById('mealSelect').selectedIndex = newIndex;
+    change('', '');
   }
 
   //called on load and after each filter click
@@ -95,9 +126,24 @@ angular.module('starter.controllers', ['ionic'])
 
   $scope.downvote = function(item) {
     //console.log('downvote', item['Name']);
-    item['Votes']--;
-    $scope.displayedItems = displayedItems;
+    var id = item['Id'];
 
+    if (!(id in votes)) {
+      votes[id] = false;
+      downpost(item);
+    }
+    else if (votes[id] == true) { //already upvoted
+      votes[id] == false;
+      downpost(item);
+      downpost(item);
+    }
+    //else already downvoted, no change
+    
+    $scope.displayedItems = displayedItems;
+  }
+
+  function downpost (item) {
+    item['Votes']--;
     $http.post('http://sniksnak.herokuapp.com/api/dec/' + item['Id']).then(
       function(resp) { /*console.log('Post Success', resp);*/ }, 
       function(err) { console.error('Post Error', err, err.status);
@@ -105,19 +151,34 @@ angular.module('starter.controllers', ['ionic'])
   }
 
   $scope.upvote = function(item) {
-    //console.log('upvote', item['Name']);
-    item['Votes']++;
-    $scope.displayedItems = displayedItems;
+    //console.log('downvote', item['Name']);
+    var id = item['Id'];
 
+    if (!(id in votes)) {
+      votes[id] = true;
+      uppost(item);
+    }
+    else if (votes[id] == false) { //already downvoted
+      votes[id] == true;
+      uppost(item);
+      uppost(item);
+    }
+    //else already upvoted, no change
+    
+    $scope.displayedItems = displayedItems;
+  }
+
+  function uppost (item) {
+    item['Votes']++;
     $http.post('http://sniksnak.herokuapp.com/api/inc/' + item['Id']).then(
-      function(resp) { /*console.log('Post Success', resp);*/ },
+      function(resp) { /*console.log('Post Success', resp);*/ }, 
       function(err) { console.error('Post Error', err, err.status);
     });
   }
 
   $scope.mealChange = function() {
     newMeal = document.getElementById('mealSelect').selectedIndex;
-    console.log('mealChange', newMeal);
+    //console.log('mealChange', newMeal);
     if (newMeal == 0) {meal = 'b';}
     else if (newMeal == 1) {meal = 'l';}
     else if (newMeal == 2) {meal = 'd';}
