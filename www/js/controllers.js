@@ -6,7 +6,7 @@ angular.module('starter.controllers', ['ionic'])
   var halls = []; //Rocky/Mathey, Wu/Wilcox, Whitman, Forbes, Grad, CJL
   var filters = []; //Vegetarian, Vegan
   var freeFilters = []; //Pork, Nuts
-  var meal = 'l'; //breakfast 'b', lunch 'l', dinner 'd'
+  var meal = ''; //breakfast 'b', lunch 'l', dinner 'd'
   var votes = {}; //id: true/false for key: value
 
   $http.get('http://sniksnak.herokuapp.com/api/get/').then(function(resp) {
@@ -113,8 +113,10 @@ angular.module('starter.controllers', ['ionic'])
       var addItem = true;
 
       //check for meal of day and hall match
-      if (meal == item['Meal'] ||
-        halls.length != 0 && halls.indexOf(item['Hall']) == -1) {
+      if (meal == item['Meal']) {
+        if (halls.length != 0 && halls.indexOf(item['Hall']) == -1) {
+          addItem = false;
+        }
 
         itemFilters = item['Filters'];
 
@@ -128,7 +130,7 @@ angular.module('starter.controllers', ['ionic'])
 
         //check "free" filters matches
         for (k = 0; k < freeFilters.length; k++) {
-          if (itemFilters.indexOf(freeFilters[k] == 1)) {
+          if (itemFilters.indexOf(freeFilters[k]) != -1) {
             addItem = false;
             break;
           }
