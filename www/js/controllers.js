@@ -3,9 +3,9 @@ angular.module('starter.controllers', ['ionic'])
 .controller('PlaylistsCtrl', function($scope, $http) {
   var items = [];
   var displayedItems = [];
-  var halls = []; //roma, wucox, whitman, forbes, grad, cjl
-  var filters = []; //vgt, vgn
-  var porkfree = false;
+  var halls = []; //Rocky/Mathey, Wu/Wilcox, Whitman, Forbes, Grad, CJL
+  var filters = []; //Vegetarian, Vegan
+  var freeFilters = []; //Pork, Nuts
   var meal = 'l'; //breakfast 'b', lunch 'l', dinner 'd'
   var votes = {}; //id: true/false for key: value
 
@@ -13,14 +13,13 @@ angular.module('starter.controllers', ['ionic'])
     console.log('Get Success', resp);
     // For JSON responses, resp.data contains the result
     items = resp.data;
-    //change('', '');
     getCurrentMeal();
   }, function(err) {
     console.error('Get Error', err, err.status);
     // err.status will contain the status code
   });
 
-  //click event listeners for filter button
+  //click event listeners for filter buttons
   document.getElementById ('forbes').addEventListener ('click',
     function() {highlight(document.getElementById ('forbes')); change('hall', 'Forbes');}, false);
   document.getElementById ('wucox').addEventListener ('click',
@@ -38,13 +37,11 @@ angular.module('starter.controllers', ['ionic'])
     function() {highlight(document.getElementById ('vgt')); change('filter', 'Vegetarian');}, false);
   document.getElementById ('vgn').addEventListener ('click', 
     function() {highlight(document.getElementById ('vgn')); change('filter', 'Vegan');}, false);
-  
-  document.getElementById ('porkfree').addEventListener ('click', 
-    function() {
-      porkfree = !porkfree;
-      highlight(document.getElementById ('porkfree'));
-      change('', '');}, false);
 
+  document.getElementById ('porkfree').addEventListener ('click', 
+    function() {highlight(document.getElementById ('porkfree')); change('freeFilter', 'Pork');}, false);
+  document.getElementById ('nutfree').addEventListener ('click', 
+    function() {highlight(document.getElementById ('nutfree')); change('freeFilter', 'Nuts');}, false);
 
   function highlight(button) {
     button = angular.element(button.querySelector('.circle'));
@@ -83,8 +80,8 @@ angular.module('starter.controllers', ['ionic'])
   //called on load and after each filter click
   function change(type, button) {
     var index = -2;
-    //update hall/filter
 
+    //update hall/filter/freeFilter
     if (type == 'hall') {
       index = halls.indexOf(button);
       if(index == -1)
@@ -99,26 +96,45 @@ angular.module('starter.controllers', ['ionic'])
       else
         filters.splice(index, 1);
     }
+    else if (type == 'freeFilter') {
+      index = freeFilters.indexOf(button);
+      if(index == -1)
+        freeFilters.push(button);
+      else
+        freeFilters.splice(index, 1);
+    }
+
     //update displayedItems
+    //to be displayed, item hall must match one of halls selected (if any)
+    //must match all of filters and none of freeFilters
     displayedItems = [];
     for (i = 0; i < items.length; i++) {
       item = items[i];
       var addItem = true;
 
-      if (meal == item['Meal']) {
+      //check for meal of day and hall match
+      if (meal == item['Meal'] ||
+        halls.length != 0 && halls.indexOf(item['Hall']) == -1) {
+
         itemFilters = item['Filters'];
+
+        //check filter matches
         for (j = 0; j < filters.length; j++) {
           if (itemFilters.indexOf(filters[j]) == -1) {
             addItem = false;
             break;
           }
         }
-        if (addItem && porkfree && itemFilters.indexOf('Pork') != -1)
-          addItem = false;
-        if (addItem && halls.length != 0 && halls.indexOf(item['Hall']) == -1)
-          addItem = false;
+
+        //check "free" filters matches
+        for (k = 0; k < freeFilters.length; k++) {
+          if (itemFilters.indexOf(freeFilters[k] == 1)) {
+            addItem = false;
+            break;
+          }
+        }
       }
-      else {addItem = false;}
+      else { addItem = false; }
 
       if (addItem == true)
         displayedItems.push(item);
