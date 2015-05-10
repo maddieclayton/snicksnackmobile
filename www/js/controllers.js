@@ -55,24 +55,24 @@ angular.module('starter.controllers', ['ionic'])
     var time = new Date();
     var hour = time.getHours();
     var day = time.getDay();
-    var newIndex = '';
+    var newIndex = -1;
 
     if (hour < 11) {
       if (day == 0 || day == 6) {
-        newIndex = '1';
+        newIndex = 1;
         meal = 'l';
       }
       else {
-        newIndex = '0';
+        newIndex = 0;
         meal = 'b';
       }
     }
     else if (hour < 14) {
-      newIndex = '1';
+      newIndex = 1;
       meal = 'l';
     }
     else {
-      newIndex = '2';
+      newIndex = 2;
       meal = 'd';
     }
 
@@ -130,16 +130,19 @@ angular.module('starter.controllers', ['ionic'])
     //console.log('downvote', item['Name']);
     var id = item['Id'];
 
-    if (!(id in votes)) {
-      votes[id] = false;
+    if (!(id in votes) || votes[id] == 0) {
+      votes[id] = -1;
       downpost(item);
     }
-    else if (votes[id] == true) { //already upvoted
-      votes[id] == false;
+    else if (votes[id] == 1) { //already upvoted
+      votes[id] = -1;
       downpost(item);
       downpost(item);
     }
-    //else already downvoted, no change
+    else { //already downvoted
+      votes[id] = 0;
+      uppost(item);
+    }
     
     $scope.displayedItems = displayedItems;
   }
@@ -156,16 +159,19 @@ angular.module('starter.controllers', ['ionic'])
     //console.log('downvote', item['Name']);
     var id = item['Id'];
 
-    if (!(id in votes)) {
-      votes[id] = true;
+    if (!(id in votes) || votes[id] == 0) {
+      votes[id] = 1;
       uppost(item);
     }
-    else if (votes[id] == false) { //already downvoted
-      votes[id] == true;
+    else if (votes[id] == -1) { //already downvoted
+      votes[id] = 1;
       uppost(item);
       uppost(item);
     }
-    //else already upvoted, no change
+    else { //already upvoted
+      votes[id] = 0;
+      downpost(item);
+    }
     
     $scope.displayedItems = displayedItems;
   }
