@@ -22,29 +22,31 @@ angular.module('starter.controllers', ['ionic'])
 
   //click event listeners for filter button
   document.getElementById ('forbes').addEventListener ('click',
-    function() {maddiesucks(document.getElementById ('forbes'));change('hall', 'Forbes');}, false);
+    function() {highlight(document.getElementById ('forbes')); change('hall', 'Forbes');}, false);
   document.getElementById ('wucox').addEventListener ('click',
-    function() {maddiesucks(document.getElementById ('wucox'));change('hall', 'Wu/Wilcox');}, false);
+    function() {highlight(document.getElementById ('wucox')); change('hall', 'Wu/Wilcox');}, false);
   document.getElementById ('roma').addEventListener ('click',
-    function() {maddiesucks(document.getElementById ('roma'));change('hall', 'Rocky/Mathey');}, false);
+    function() {highlight(document.getElementById ('roma')); change('hall', 'Rocky/Mathey');}, false);
   document.getElementById ('whitman').addEventListener ('click',
-    function() {maddiesucks(document.getElementById ('whitman'));change('hall', 'Whitman');}, false);
+    function() {highlight(document.getElementById ('whitman')); change('hall', 'Whitman');}, false);
   document.getElementById ('cjl').addEventListener ('click', 
-    function() {maddiesucks(document.getElementById ('cjl'));change('hall', 'CJL');}, false);
+    function() {highlight(document.getElementById ('cjl')); change('hall', 'CJL');}, false);
   document.getElementById ('grad').addEventListener ('click', 
-    function() {maddiesucks(document.getElementById ('grad'));change('hall', 'Grad');}, false);
+    function() {highlight(document.getElementById ('grad')); change('hall', 'Grad');}, false);
 
   document.getElementById ('vgt').addEventListener ('click', 
-    function() {change('filter', 'Vegetarian');}, false);
+    function() {highlight(document.getElementById ('vgt')); change('filter', 'Vegetarian');}, false);
   document.getElementById ('vgn').addEventListener ('click', 
-    function() {change('filter', 'Vegan');}, false);
+    function() {highlight(document.getElementById ('vgn')); change('filter', 'Vegan');}, false);
   
   document.getElementById ('porkfree').addEventListener ('click', 
     function() {
       porkfree = !porkfree;
+      highlight(document.getElementById ('porkfree'));
       change('', '');}, false);
 
-  function maddiesucks(button) {
+
+  function highlight(button) {
     button = angular.element(button.querySelector('.circle'));
     button.toggleClass('highlight');
   }
