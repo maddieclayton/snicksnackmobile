@@ -3,7 +3,7 @@ angular.module('starter.controllers', ['ionic'])
 .controller('PlaylistsCtrl', function($scope, $http) {
   var items = [];
   var displayedItems = [];
-  var halls = []; //Rocky/Mathey, Wu/Wilcox, Whitman, Forbes, Grad, CJL
+  var halls = []; //Rocky/Mathey, Wu/Wilcox, Whitman, Forbes, CJL
   var filters = []; //Vegetarian, Vegan
   var freeFilters = []; //Pork, Nuts
   var meal = ''; //breakfast 'b', lunch 'l', dinner 'd'
@@ -30,9 +30,7 @@ angular.module('starter.controllers', ['ionic'])
     function() {highlight(document.getElementById ('whitman')); change('hall', 'Whitman');}, false);
   document.getElementById ('cjl').addEventListener ('click', 
     function() {highlight(document.getElementById ('cjl')); change('hall', 'CJL');}, false);
-  document.getElementById ('grad').addEventListener ('click', 
-    function() {highlight(document.getElementById ('grad')); change('hall', 'Grad');}, false);
-
+  
   document.getElementById ('vgt').addEventListener ('click', 
     function() {highlight(document.getElementById ('vgt')); change('filter', 'Vegetarian');}, false);
   document.getElementById ('vgn').addEventListener ('click', 
@@ -73,7 +71,7 @@ angular.module('starter.controllers', ['ionic'])
       meal = 'd';
     }
 
-    document.getElementById('mealSelect').selectedIndex = newIndex;
+    document.getElementById('mealSelect').selectedIndex = newIndex + 1;
     change('', '');
   }
 
@@ -120,12 +118,16 @@ angular.module('starter.controllers', ['ionic'])
 
         itemFilters = item['Filters'];
 
-        //check filter matches
-        for (j = 0; j < filters.length; j++) {
-          if (itemFilters.indexOf(filters[j]) == -1) {
+        //check if item matches filter(s)
+        if (filters.indexOf('Vegetarian') != -1) { 
+          if (itemFilters.indexOf('Vegan') == -1 && 
+            itemFilters.indexOf('Vegetarian') == -1) {
             addItem = false;
-            break;
           }
+        }
+        else if (filters.indexOf('Vegan') != -1 &&
+          itemFilters.indexOf('Vegan') == -1) {
+          addItem = false;
         }
 
         //check "free" filters matches
